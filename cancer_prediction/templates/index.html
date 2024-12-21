@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/predict">Predict Cancer Risk</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="info">
+    <h1>Patient Risk Factors</h1>
+
+    <h2>Age:</h2>
+    <p class="description">The age of the patient in years. Examples: 33, 17, 35.</p>
+
+    <h2>Gender:</h2>
+    <p class="description">Gender of the patient, represented numerically: 
+        <ul>
+            <li>1 for Male</li>
+            <li>2 for Female</li>
+        </ul>
+        Example: 1 (Male), 2 (Female).
+    </p>
+
+    <h2>Air Pollution:</h2>
+    <p class="description">Level of exposure to air pollution. Higher values indicate higher exposure.
+        Example: 2, 3, 4 represent increasing levels of air pollution (1 could be the lowest level, and 7 the highest).
+    </p>
+
+    <h2>Alcohol Use:</h2>
+    <p class="description">Frequency of alcohol use. Higher values likely represent more frequent consumption.
+        Example: 4, 1, 7 represent varying levels of alcohol use (1 could be minimal use, and 7 could indicate excessive use).
+    </p>
+
+    <h2>Dust Allergy:</h2>
+    <p class="description">Degree of dust allergy. Higher values suggest more severe allergic reactions.
+        Example: 5, 4, 6 indicate the severity of dust allergies.
+    </p>
+
+    <h2>Occupational Hazards:</h2>
+    <p class="description">Risk of cancer due to occupational exposure (e.g., working in harmful environments). Higher values represent greater risk.
+        Example: 4, 3, 5 indicate varying degrees of risk.
+    </p>
+
+    <h2>Genetic Risk:</h2>
+    <p class="description">Level of genetic predisposition to cancer. Higher values mean a higher genetic risk.
+        Example: 3, 4, 5 represent levels of genetic risk.
+    </p>
+
+    <h2>Chronic Lung Disease:</h2>
+    <p class="description">Whether the patient has chronic lung disease. Higher values likely represent more severe cases.
+        Example: 2, 2, 7 could indicate the severity or presence of lung disease.
+    </p>
+
+    <h2>Balanced Diet:</h2>
+    <p class="description">Degree of adherence to a balanced diet. Higher values represent better dietary habits.
+        Example: 4, 2, 6 reflect how balanced the patient's diet is.
+    </p>
+
+    <h2>Obesity:</h2>
+    <p class="description">Obesity level. Higher values likely represent more severe obesity.
+        Example: 3, 2, 7 show varying levels of obesity.
+    </p>
+
+    <h2>Smoking:</h2>
+    <p class="description">Level of smoking. Higher values suggest more frequent or intense smoking habits.
+        Example: 2, 4, 6 represent the severity of smoking behavior.
+    </p>
+
+    <h2>Passive Smoker:</h2>
+    <p class="description">Level of exposure to second-hand smoke. Higher values represent more exposure.
+        Example: 2, 1, 7 show the level of passive smoking.
+    </p>
+
+    <h2>Chest Pain:</h2>
+    <p class="description">Presence of chest pain. Higher values could indicate more severe or frequent chest pain.
+        Example: 2, 3, 4 represent the severity or frequency of chest pain.
+    </p>
+
+    <h2>Coughing of Blood:</h2>
+    <p class="description">Whether the patient has experienced coughing up blood. Higher values indicate a more frequent or severe occurrence.
+        Example: 4, 2, 8 reflect the occurrence of this symptom.
+    </p>
+
+    <h2>Fatigue:</h2>
+    <p class="description">Level of fatigue. Higher values suggest more severe fatigue.
+        Example: 3, 1, 7 show varying degrees of fatigue.
+    </p>
+
+    <h2>Weight Loss:</h2>
+    <p class="description">Whether the patient has experienced weight loss. Higher values indicate more severe weight loss.
+        Example: 4, 3, 9 represent weight loss severity.
+    </p>
+
+    <h2>Shortness of Breath:</h2>
+    <p class="description">Severity of shortness of breath. Higher values indicate more severe difficulty breathing.
+        Example: 2, 2, 2 could indicate levels of breathlessness.
+    </p>
+
+    <h2>Wheezing:</h2>
+    <p class="description">Presence of wheezing. Higher values indicate more frequent or severe wheezing.
+        Example: 3, 4, 1 reflect the severity of wheezing.
+    </p>
+
+    <h2>Swallowing Difficulty:</h2>
+    <p class="description">Difficulty in swallowing. Higher values indicate more severe difficulty.
+        Example: 1, 4, 3 represent the severity of swallowing issues.
+    </p>
+
+    <h2>Clubbing of Finger Nails:</h2>
+    <p class="description">Presence of finger nail clubbing, a possible sign of lung or heart disease. Higher values may indicate more severe cases.
+        Example: 2, 2, 4 indicate varying degrees of nail clubbing.
+    </p>
+
+    <h2>Frequent Cold:</h2>
+    <p class="description">Frequency of cold-related symptoms. Higher values suggest more frequent occurrences.
+        Example: 3, 2, 7 represent frequency.
+    </p>
+
+    <h2>Dry Cough:</h2>
+    <p class="description">Presence of dry cough. Higher values represent more severe or frequent occurrences.
+        Example: 4, 1, 7 reflect dry cough severity.
+    </p>
+
+    <h2>Snoring:</h2>
+    <p class="description">Frequency or severity of snoring. Higher values likely represent more frequent or louder snoring.
+        Example: 3, 2, 5 represent the intensity or frequency of snoring.
+    </p>
+
+    <h2>Level:</h2>
+    <p class="description">The predicted cancer risk level based on the input data. It is a classification, where:
+        <ul>
+            <li>Low</li>
+            <li>Medium</li>
+            <li>High</li>
+        </ul>
+        Example: Low, Medium, High represent different levels of cancer risk.
+    </p>
+</div>
+
+    <div class="container">
+        <header>
+            <h1>Cancer Risk Prediction</h1>
+        </header>
+        <main>
+            <form action="/predict" method="POST">
+                <div class="input-group">
+                    <label for="age">Age</label>
+                    <input type="number" name="age" id="age" required>
+                </div>
+                <div class="input-group">
+                    <label for="gender">Gender (1 for Male, 0 for Female)</label>
+                    <input type="number" name="gender" id="gender" required>
+                </div>
+                <div class="input-group">
+                    <label for="air_pollution">Air Pollution</label>
+                    <input type="number" name="air_pollution" id="air_pollution" required>
+                </div>
+                <div class="input-group">
+                    <label for="alcohol_use">Alcohol Use</label>
+                    <input type="number" name="alcohol_use" id="alcohol_use" required>
+                </div>
+                <div class="input-group">
+                    <label for="dust_allergy">Dust Allergy</label>
+                    <input type="number" name="dust_allergy" id="dust_allergy" required>
+                </div>
+                <div class="input-group">
+                    <label for="occupational_hazards">Occupational Hazards</label>
+                    <input type="number" name="occupational_hazards" id="occupational_hazards" required>
+                </div>
+                <div class="input-group">
+                    <label for="genetic_risk">Genetic Risk</label>
+                    <input type="number" name="genetic_risk" id="genetic_risk" required>
+                </div>
+                <div class="input-group">
+                    <label for="chronic_lung_disease">Chronic Lung Disease</label>
+                    <input type="number" name="chronic_lung_disease" id="chronic_lung_disease" required>
+                </div>
+                <div class="input-group">
+                    <label for="balanced_diet">Balanced Diet</label>
+                    <input type="number" name="balanced_diet" id="balanced_diet" required>
+                </div>
+                <div class="input-group">
+                    <label for="obesity">Obesity</label>
+                    <input type="number" name="obesity" id="obesity" required>
+                </div>
+                <div class="input-group">
+                    <label for="smoking">Smoking</label>
+                    <input type="number" name="smoking" id="smoking" required>
+                </div>
+                <div class="input-group">
+                    <label for="passive_smoker">Passive Smoker</label>
+                    <input type="number" name="passive_smoker" id="passive_smoker" required>
+                </div>
+                <div class="input-group">
+                    <label for="chest_pain">Chest Pain</label>
+                    <input type="number" name="chest_pain" id="chest_pain" required>
+                </div>
+                <div class="input-group">
+                    <label for="coughing_of_blood">Coughing of Blood</label>
+                    <input type="number" name="coughing_of_blood" id="coughing_of_blood" required>
+                </div>
+                <div class="input-group">
+                    <label for="fatigue">Fatigue</label>
+                    <input type="number" name="fatigue" id="fatigue" required>
+                </div>
+                <div class="input-group">
+                    <label for="weight_loss">Weight Loss</label>
+                    <input type="number" name="weight_loss" id="weight_loss" required>
+                </div>
+                <div class="input-group">
+                    <label for="shortness_of_breath">Shortness of Breath</label>
+                    <input type="number" name="shortness_of_breath" id="shortness_of_breath" required>
+                </div>
+                <div class="input-group">
+                    <label for="wheezing">Wheezing</label>
+                    <input type="number" name="wheezing" id="wheezing" required>
+                </div>
+                <div class="input-group">
+                    <label for="swallowing_difficulty">Swallowing Difficulty</label>
+                    <input type="number" name="swallowing_difficulty" id="swallowing_difficulty" required>
+                </div>
+                <div class="input-group">
+                    <label for="clubbing_of_finger_nails">Clubbing of Finger Nails</label>
+                    <input type="number" name="clubbing_of_finger_nails" id="clubbing_of_finger_nails" required>
+                </div>
+                <div class="input-group">
+                    <label for="frequent_cold">Frequent Cold</label>
+                    <input type="number" name="frequent_cold" id="frequent_cold" required>
+                </div>
+                <div class="input-group">
+                    <label for="dry_cough">Dry Cough</label>
+                    <input type="number" name="dry_cough" id="dry_cough" required>
+                </div>
+                <div class="input-group">
+                    <label for="snoring">Snoring</label>
+                    <input type="number" name="snoring" id="snoring" required>
+                </div>
+                <button type="submit">Predict</button>
+            </form>
+            {% if prediction_text %}
+            <div class="result">
+                <h2>{{ prediction_text }}</h2>
+            </div>
+            {% endif %}
+        </main>
+<br>
+<br>
+<br>
+<br>
+
+     
+    </div>
+         <!-- Footer Section -->
+         <footer>
+            <p>&copy; 2024 Cancer Prediction. All rights reserved.</p>
+            <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+        </footer>
+    
+</body>
+</html>
